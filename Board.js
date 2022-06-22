@@ -38,6 +38,32 @@ class Board {
     current_shape.rotate(this.shapes);
   }
 
+  clearLine() {
+    let state = [];
+    for (let i = 0; i < high; i++) {
+      state[i] = [];
+    }
+    for (let shape of this.shapes) {
+      for (let block of shape.blocks) {
+        if (block.y < high && block.y >= 0) {
+          if (!state[block.y].includes(block.x)) {
+            state[block.y].push(block.x);
+          }
+        }
+      }
+    }
+    for (let i = 0; i < state.length; i++) {
+      if (state[i].length == wide) {
+        for (let shape of this.shapes) {
+          shape.blocks = shape.blocks.filter((block) => block.y != i);
+        }
+        for (let shape of this.shapes) {
+          shape.should_update = true;
+        }
+      }
+    }
+  }
+
   move(direction) {
     let current_shape = this.shapes[this.shapes.length - 1];
     switch (direction) {

@@ -15,9 +15,10 @@ function setup() {
 
 function draw() {
   background(255);
-  frameRate(1);
+  frameRate(4);
   board.show();
   board.run();
+  board.clearLine();
   if (game_over) {
     noLoop();
   }
