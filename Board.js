@@ -3,6 +3,8 @@ class Board {
     this.width = width;
     this.height = height;
     this.shapes = [new Shape(random(shape_options))];
+    this.held = null;
+    this.next = random(shape_options);
   }
 
   show() {
@@ -60,7 +62,20 @@ class Board {
         for (let shape of this.shapes) {
           shape.should_update = true;
         }
+        score++;
       }
+    }
+  }
+
+  hold() {
+    if (!this.held) {
+      this.held = this.shapes[this.shapes.length - 1];
+      this.shapes[this.shapes.length - 1] = new Shape(this.next);
+      this.next = random(shape_options);
+    } else {
+      let temp_shape = this.shapes[this.shapes.length - 1];
+      this.shapes[this.shapes.length - 1] = new Shape(this.held.shape);
+      this.held = temp_shape;
     }
   }
 
@@ -90,7 +105,8 @@ class Board {
       shape.show();
     }
     if (this.shapes[this.shapes.length - 1].reachedBottom()) {
-      this.shapes.push(new Shape(random(shape_options)));
+      this.shapes.push(new Shape(this.next));
+      this.next = random(shape_options);
       frameRate(60);
     }
   }
