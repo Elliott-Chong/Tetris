@@ -9,6 +9,7 @@ let game_over = false;
 let score = 0;
 
 let images = {};
+let space_mono = {};
 
 function preload() {
   images["square"] = loadImage("./images/square.png");
@@ -18,6 +19,8 @@ function preload() {
   images["vert"] = loadImage("./images/vert.png");
   images["inverseL"] = loadImage("./images/inverseL.png");
   images["t"] = loadImage("./images/t.png");
+
+  space_mono["bold"] = loadFont("./Space_Mono/SpaceMono-Bold.ttf");
 }
 
 function setup() {
@@ -27,6 +30,7 @@ function setup() {
 }
 
 function draw() {
+  textFont(space_mono.bold);
   background(255);
   frameRate(1);
   board.show();

@@ -10,25 +10,25 @@ class Shape {
     this.state = 0;
     switch (this.shape) {
       case "s":
-        this.color = color(0, 255, 0);
+        this.color = color(0, 240, 0);
         break;
       case "z":
-        this.color = color(255, 0, 0);
+        this.color = color(240, 0, 0);
         break;
       case "vert":
-        this.color = color(0, 0, 255);
+        this.color = color(0, 240, 240);
         break;
       case "t":
-        this.color = color(0, 200, 200);
+        this.color = color(160, 0, 240);
         break;
       case "L":
-        this.color = color(200, 200, 0);
+        this.color = color(240, 160, 0);
         break;
       case "square":
-        this.color = color(200, 0, 200);
+        this.color = color(240, 240, 0);
         break;
       case "inverseL":
-        this.color = color(0, 0, 180);
+        this.color = color(0, 0, 240);
         break;
     }
     switch (this.shape) {

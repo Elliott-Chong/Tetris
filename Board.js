@@ -54,16 +54,26 @@ class Board {
         }
       }
     }
-    for (let i = 0; i < state.length; i++) {
+    let completed_lines = [];
+    for (let i = 0; i < high; i++) {
       if (state[i].length == wide) {
         for (let shape of this.shapes) {
           shape.blocks = shape.blocks.filter((block) => block.y != i);
         }
-        for (let shape of this.shapes) {
-          shape.should_update = true;
-        }
-        score++;
+        completed_lines.push(i);
       }
+    }
+
+    //completed_lines [16,17,18,19]
+    for (let i = 0; i < completed_lines.length; i++) {
+      for (let shape of this.shapes) {
+        for (let block of shape.blocks) {
+          if (block.y < completed_lines[i]) {
+            block.y++;
+          }
+        }
+      }
+      score++;
     }
   }
 
