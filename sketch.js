@@ -64,16 +64,20 @@ function draw() {
 }
 
 function keyPressed() {
-  frameRate(10);
   if (key == "d" || key == "ArrowRight") {
+    frameRate(10);
     board.move("right");
   } else if (key == "a" || key == "ArrowLeft") {
+    frameRate(10);
     board.move("left");
   } else if (key == "s" || key == "ArrowDown") {
+    frameRate(10);
     board.move("down");
   } else if (key == " ") {
+    frameRate(10);
     board.move("instant_down");
   } else if (key == "w" || key == "ArrowUp") {
+    frameRate(10);
     board.rotate();
   } else if (key == "c" || key == "h") {
     if (hold_timer) {
