@@ -31,12 +31,9 @@ class Shape {
         this.color = color(0, 0, 240);
         break;
     }
+    this.initial_position = 4;
     switch (this.shape) {
       case "s":
-        while (this.initial_position == 0 || this.initial_position == 9) {
-          this.initial_position = Math.floor(Math.random() * 10);
-        }
-
         this.blocks = [
           new Block(this.initial_position, 0, this.color),
           new Block(this.initial_position, -1, this.color),
@@ -45,10 +42,6 @@ class Shape {
         ];
         break;
       case "vert":
-        while (this.initial_position <= 2 || this.initial_position >= 8) {
-          this.initial_position = Math.floor(Math.random() * 10);
-        }
-
         this.blocks = [
           new Block(this.initial_position, 0, this.color),
           new Block(this.initial_position - 1, 0, this.color),
@@ -57,10 +50,6 @@ class Shape {
         ];
         break;
       case "z":
-        while (this.initial_position == 0 || this.initial_position == 9) {
-          this.initial_position = Math.floor(Math.random() * 10);
-        }
-
         this.blocks = [
           new Block(this.initial_position, 0, this.color),
           new Block(this.initial_position, -1, this.color),
@@ -81,10 +70,6 @@ class Shape {
         ];
         break;
       case "L":
-        while (this.initial_position == 0 || this.initial_position == 9) {
-          this.initial_position = Math.floor(Math.random() * 10);
-        }
-
         this.blocks = [
           new Block(this.initial_position, 0, this.color),
           new Block(this.initial_position - 1, 0, this.color),
@@ -93,10 +78,6 @@ class Shape {
         ];
         break;
       case "inverseL":
-        while (this.initial_position == 0 || this.initial_position == 9) {
-          this.initial_position = Math.floor(Math.random() * 10);
-        }
-
         this.blocks = [
           new Block(this.initial_position, 0, this.color),
           new Block(this.initial_position - 1, 0, this.color),
@@ -105,10 +86,7 @@ class Shape {
         ];
         break;
       case "square":
-        while (this.initial_position == 0) {
-          this.initial_position = Math.floor(Math.random() * 10);
-        }
-
+        this.initial_position = 5;
         this.blocks = [
           new Block(this.initial_position, 0, this.color),
           new Block(this.initial_position, -1, this.color),
