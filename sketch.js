@@ -8,6 +8,8 @@ const high = 20;
 let game_over = false;
 let score = 0;
 
+let hold_timer = true;
+
 let images = {};
 let space_mono = {};
 
@@ -31,12 +33,13 @@ function setup() {
 
 function draw() {
   textFont(space_mono.bold);
-  background(255);
   frameRate(1);
+  background(255);
   board.show();
   board.run();
   board.clearLine();
   if (game_over) {
+    console.log("game over");
     noLoop();
   }
   textSize(32);
@@ -61,8 +64,7 @@ function draw() {
 }
 
 function keyPressed() {
-  push();
-  frameRate(60);
+  frameRate(10);
   if (key == "d" || key == "ArrowRight") {
     board.move("right");
   } else if (key == "a" || key == "ArrowLeft") {
@@ -74,7 +76,9 @@ function keyPressed() {
   } else if (key == "w" || key == "ArrowUp") {
     board.rotate();
   } else if (key == "c" || key == "h") {
-    board.hold();
+    if (hold_timer) {
+      board.hold();
+      hold_timer = false;
+    }
   }
-  pop();
 }

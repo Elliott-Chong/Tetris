@@ -5,11 +5,17 @@ class Block {
     this.color = color;
   }
 
-  show() {
+  show(faux = false) {
     push();
     strokeWeight(3);
     stroke(0);
-    fill(this.color);
+    if (!faux) {
+      fill(this.color);
+    } else {
+      let [r, g, b, a] = this.color.levels;
+      fill(r, g, b, 80);
+      stroke(0, 0, 0, 80);
+    }
     rectMode(CENTER);
     rect(
       this.x * block_size + offset_x,

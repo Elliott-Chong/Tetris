@@ -278,7 +278,8 @@ class Shape {
     for (let shape of all_shapes) {
       if (
         !this.equals(shape) &&
-        this.collide(shape, this.getNewPos({ x: 0, y: 1 }))
+        this.collide(shape, this.getNewPos({ x: 0, y: 1 })) &&
+        !shape.should_update
       ) {
         this.should_update = false;
       }
@@ -299,9 +300,26 @@ class Shape {
     }
   }
 
-  show() {
+  show(all_shapes) {
     for (let block of this.blocks) {
       block.show();
+    }
+
+    if (this.should_update) {
+      let faux_shape = new Shape(this.shape);
+      faux_shape.blocks.length = this.blocks.length;
+      for (let i = 0; i < faux_shape.blocks.length; i++) {
+        faux_shape.blocks[i].x = this.blocks[i].x;
+        faux_shape.blocks[i].y = this.blocks[i].y;
+      }
+
+      while (!faux_shape.reachedBottom()) {
+        faux_shape.update(all_shapes);
+      }
+
+      for (let block of faux_shape.blocks) {
+        block.show(true);
+      }
     }
   }
 }

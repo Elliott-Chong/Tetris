@@ -112,12 +112,13 @@ class Board {
   run() {
     for (let shape of this.shapes) {
       shape.update(this.shapes);
-      shape.show();
+      shape.show(this.shapes);
     }
     if (this.shapes[this.shapes.length - 1].reachedBottom()) {
+      frameRate(60);
+      hold_timer = true;
       this.shapes.push(new Shape(this.next));
       this.next = random(shape_options);
-      frameRate(60);
     }
   }
 }
