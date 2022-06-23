@@ -4,7 +4,7 @@ class Shape {
   constructor(shape) {
     this.shape = shape;
     this.blocks;
-    this.initial_position = Math.floor(Math.random() * 10);
+    this.initial_position = 4;
     this.color;
     this.should_update = true;
     this.state = 0;
@@ -31,7 +31,6 @@ class Shape {
         this.color = color(0, 0, 240);
         break;
     }
-    this.initial_position = 4;
     switch (this.shape) {
       case "s":
         this.blocks = [
@@ -58,10 +57,6 @@ class Shape {
         ];
         break;
       case "t":
-        while (this.initial_position == 0 || this.initial_position == 9) {
-          this.initial_position = Math.floor(Math.random() * 10);
-        }
-
         this.blocks = [
           new Block(this.initial_position, 0, this.color),
           new Block(this.initial_position - 1, 0, this.color),
